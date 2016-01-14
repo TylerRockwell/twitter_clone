@@ -38,7 +38,7 @@ group :development, :test do
   # Use pry-byebug for debugging
   gem 'pry-byebug'
   # Use rspec for testing suite
-  gem 'rspec'
+  gem 'rspec-rails'
 end
 
 group :development do

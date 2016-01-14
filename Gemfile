@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
+
+# User paperclip for user avatar uploads
+gem 'paperclip'
 # Use slim to simplify templates
 gem 'slim'
 # Use devise for authentication

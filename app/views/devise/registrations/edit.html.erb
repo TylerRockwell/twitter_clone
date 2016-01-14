@@ -30,6 +30,13 @@
   <div class="field">
     <%= f.label :bio %><br />
     <%= f.text_area :bio %>
+  </div>
+
+  <%= image_tag(current_user.avatar.url(:medium)) %><br />
+  <div class="field">
+    <%= f.label :avatar %><br />
+    <%= f.file_field :avatar %>
+  </div>
 
   <div class="actions">
     <%= f.submit "Update" %>

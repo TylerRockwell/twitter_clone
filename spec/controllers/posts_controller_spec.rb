@@ -87,7 +87,7 @@ RSpec.describe PostsController, type: :controller do
 
       it "redirects to the created post" do
         post :create, {:post => valid_attributes}, valid_session
-        expect(response).to redirect_to(Post.last)
+        expect(response).to redirect_to('/posts')
       end
     end
 
@@ -126,7 +126,7 @@ RSpec.describe PostsController, type: :controller do
       it "redirects to the post" do
         post = Post.create! valid_attributes
         put :update, {:id => post.to_param, :post => valid_attributes}, valid_session
-        expect(response).to redirect_to(post)
+        expect(response).to redirect_to('/posts')
       end
     end
 

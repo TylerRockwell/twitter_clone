@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="container">
+<div class="col-md-8 col-md-offset-2 container">
   <% flash.each do |key, value| %>
     <div class="alert alert-<%= key %>">
       <%= value %>
@@ -16,10 +16,8 @@
 
   <div class="top-links">
     <% if current_user %>
-      <%= link_to 'Home', posts_url %>
-      <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Login', new_user_session_path %>
+      <%= link_to 'Not Twitter', posts_url %>
+      <span class="logout-link"><%= link_to 'Logout', destroy_user_session_path, method: :delete %></span>
     <% end %>
   </div>
 

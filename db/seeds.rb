@@ -8,3 +8,14 @@
 
 User.create!(email: "user@example.com", password: "password",
   password_confirmation: "password")
+
+User.create!(email: "lunk@example.com", password: "password",
+  password_confirmation: "password")
+
+User.create!(email: "zorldo@example.com", password: "password",
+  password_confirmation: "password")
+
+
+200.times do
+  Post.create!(user_id: rand(1..3), content: Faker::Hipster.sentence)
+end

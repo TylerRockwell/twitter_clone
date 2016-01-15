@@ -16,7 +16,6 @@ RSpec.describe Users::RegistrationsController, type: :controller do
 
       put :update, user: {email: "user@example.com",
         current_password: "password", bio: "I updated my profile"}
-      binding.pry
       user.reload
       expect(user.bio).to eq "I updated my profile"
     end

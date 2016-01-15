@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# Use bootstrap so it looks slightly less bad
+gem 'bootstrap-sass', '~> 3.3.6'
 # User paperclip for user avatar uploads
 gem 'paperclip'
 # Use slim to simplify templates
@@ -43,6 +45,9 @@ group :development, :test do
 
   #Use factory_girl for test fixtures
   gem 'factory_girl_rails'
+
+  # Get some great fake data for seeds
+  gem 'faker'
 end
 
 group :development do

@@ -1,0 +1,24 @@
+<%= image_tag(current_user.avatar.url(:medium)) %><br />
+<h1><%= current_user.email %></h1>
+
+<div class="user-profile-bio">
+  <h3> About me </h3>
+  <%= current_user.bio %>
+</div>
+
+<div class="user-profile-subscriptions">
+  <h3> My subscriptions </h3>
+  I am following <%= "0" %> people.
+</div>
+
+<div class="user-profile-followers">
+  <h3> My followers </h3>
+  I have <%= "0" %> followers.
+</div>
+
+<div class="user-profile-not-tweets">
+  <h3> I have made the following not-tweets: </h3>
+  <% current_user.posts.each do |post| %>
+    <%= post.content %> <br />
+  <% end %>
+</div>

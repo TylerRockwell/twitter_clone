@@ -19,16 +19,20 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 RSpec.describe PostsController, type: :controller do
+  before(:each) do
+    @user = create(:user)
+    sign_in @user
+  end
 
   # This should return the minimal set of attributes required to create a valid
   # Post. As you add validations to Post, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { user_id: @user.id, content: "This is valid content" }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { user_id: @user.id, content: "" }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -103,14 +107,14 @@ RSpec.describe PostsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {user_id: @user.id, content: "Updated content"}
       }
 
       it "updates the requested post" do
         post = Post.create! valid_attributes
         put :update, {:id => post.to_param, :post => new_attributes}, valid_session
         post.reload
-        skip("Add assertions for updated state")
+        expect(post.content).to eq(new_attributes[:content])
       end
 
       it "assigns the requested post as @post" do

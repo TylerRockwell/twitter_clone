@@ -1,12 +1,23 @@
 require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe UsersController, type: :controller do
-
-  describe "GET #show" do
-    it "returns http success" do
-      get :show
-      expect(response).to have_http_status(:success)
-    end
+RSpec.describe Users::RegistrationsController, type: :controller do
+  before do
+    @request.env["devise.mapping"] = Devise.mappings[:user]
   end
 
+  describe "PUT /users" do
+    it "updates the user's bio" do
+      user = create(:user)
+      sign_in user, user
+
+      expect(subject.current_user).to eq(user)
+      expect(user.bio).to eq 'Hello'
+
+      put :update, user: {email: "user@example.com",
+        current_password: "password", bio: "I updated my profile"}
+      user.reload
+      expect(user.bio).to eq "I updated my profile"
+    end
+  end
 end

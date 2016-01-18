@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   post 'follow' => 'users#follow'
-  resources :users, only: [:show]
   get 'profile/:username' => 'users#show', as: :profile
   resources :posts
   devise_for :users, :controllers => {registrations: 'users/registrations'}

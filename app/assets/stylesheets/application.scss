@@ -10,9 +10,34 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
  */
-.field{
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+.field {
   padding-bottom: 1em;
+}
+
+.container {
+  font-size: 18px;
+}
+
+.delete-button {
+  color: red;
+}
+
+.page-links {
+  margin-top: 2em;
+}
+
+.logout-link {
+  float: right;
+}
+
+.top-links {
+  font-size: 24px;
+}
+
+.post-email {
+  padding-right: 1em;
 }

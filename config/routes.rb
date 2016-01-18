@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   post 'follow' => 'users#follow'
+  delete 'unfollow' => 'users#unfollow'
   get 'profile/:username' => 'users#show', as: :profile
   resources :posts
   devise_for :users, :controllers => {registrations: 'users/registrations'}

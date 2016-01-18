@@ -18,15 +18,15 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  def already_following(followed_id)
-    following.include?(User.find(followed_id))
-  end
-
   def number_of_followers
     followers.count
   end
 
   def number_followed_by_user
     following.count
+  end
+
+  def is_following?(user_id)
+    following.include?(User.find(user_id))
   end
 end

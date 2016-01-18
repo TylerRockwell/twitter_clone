@@ -1,6 +1,10 @@
 <%= image_tag(@user.avatar.url(:medium)) %><br />
 <h1><%= @user.username %></h1>
-<%= link_to 'Follow this user', follow_path(user: @user), method: :post %>
+<% if current_user.is_following?(@user.id) %>
+  <%= link_to 'Unfollow this user', unfollow_path(user: @user), method: :delete %>
+<% else %>
+  <%= link_to 'Follow this user', follow_path(user: @user), method: :post %>
+<% end %>
 
 <div class="user-profile-email">
   <h3> My email </h3>

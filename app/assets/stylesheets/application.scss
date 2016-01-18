@@ -14,36 +14,36 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-.field{
+.field {
   padding-bottom: 1em;
 }
 
-.container{
+.container {
   font-size: 18px;
 }
 
-.delete-button{
+.delete-button {
   color: red;
 }
 
-.page-links{
+.page-links {
   margin-top: 2em;
 }
 
-.logout-link{
+.logout-link {
   float: right;
 }
 
-.profile-link{
+.profile-link {
   float: right;
   padding-right: 1em;
 }
 
-.top-links{
+.top-links {
   font-size: 24px;
 }
 
-.post-email{
+.post-email {
   padding-right: 1em;
 }
 
@@ -57,8 +57,4 @@
 
 .alert-alert{
   color: red;
-}
-
-.user-profile-not-tweets{
-
 }

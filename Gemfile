@@ -57,3 +57,8 @@ group :development do
 
   gem 'rails-footnotes', '~> 4.0'
 end
+
+group :test do
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
+end

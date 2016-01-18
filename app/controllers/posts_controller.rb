@@ -5,7 +5,8 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all.includes(:user)
+    # @posts = Post.all.includes(:user)
+    @posts = Post.where(user_id: current_user.following.map(&:id)).includes(:user)
   end
 
   # GET /posts/1

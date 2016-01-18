@@ -21,4 +21,12 @@ class User < ActiveRecord::Base
   def already_following(followed_id)
     following.include?(User.find(followed_id))
   end
+
+  def number_of_followers
+    followers.count
+  end
+
+  def number_followed_by_user
+    following.count
+  end
 end

@@ -4,7 +4,7 @@ RSpec.describe "posts/edit", type: :view do
   before(:each) do
     @post = assign(:post, Post.create!(
       :user_id => 1,
-      :content => "MyString"
+      :content => "First post!"
     ))
   end
 
@@ -13,9 +13,7 @@ RSpec.describe "posts/edit", type: :view do
 
     assert_select "form[action=?][method=?]", post_path(@post), "post" do
 
-      assert_select "input#post_user_id[name=?]", "post[user_id]"
-
-      assert_select "input#post_content[name=?]", "post[content]"
+      assert_select "#post_content", @post.content
     end
   end
 end

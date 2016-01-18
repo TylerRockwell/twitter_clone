@@ -1,6 +1,6 @@
 Feature: Users
 
-  Scenario: As a User I want to see my bio
+  Scenario: As a User I want to see my profile
     Given I am logged in with email "test@example.com" and password "password"
     When I visit my profile page
     Then I should see "About me"

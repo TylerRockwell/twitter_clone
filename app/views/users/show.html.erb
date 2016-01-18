@@ -1,5 +1,6 @@
 <%= image_tag(@user.avatar.url(:medium)) %><br />
 <h1><%= @user.username %></h1>
+<%= link_to 'Follow this user', follow_path(user: @user), method: :post %>
 
 <div class="user-profile-email">
   <h3> My email </h3>

@@ -1,5 +1,7 @@
-<%= image_tag(@user.avatar.url(:medium)) %><br />
-<h1><%= @user.username %></h1>
+<%= image_tag(@user.avatar.url(:medium), class: "user-profile-avatar") %><br />
+<p><%= link_to 'Edit your profile', edit_user_registration_path  %></p>
+
+  <h1><%= @user.username %></h1>
 <% if current_user.is_following?(@user.id) %>
   <%= link_to 'Unfollow this user', unfollow_path(user: @user), method: :delete %>
 <% else %>
@@ -26,9 +28,16 @@
   I have <%= pluralize(@user.number_of_followers, "followers") %>.
 </div>
 
-<div class="user-profile-not-tweets">
+<div>
   <h3> I have made the following not-tweets: </h3>
   <% @user.posts.each do |post| %>
-    <%= post.content %> <br />
+    <div class="user-profile-post row">
+      <div class="col-md-5">
+        <%= link_to post.content, post_path(post) %>
+      </div>
+      <div class="col-md-1">
+        <%= link_to '', edit_post_path(post), class: "glyphicon glyphicon-pencil" %>
+      </div>
+    </div>
   <% end %>
 </div>

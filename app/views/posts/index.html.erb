@@ -13,10 +13,17 @@
     <% @posts.each do |post| %>
       <tr>
         <td class="post-email"><%= post.user.username %></td>
-        <td class="post-content"><%= post.content %></td>
+        <td class="post-content"><%= link_to post.content, post_path(post) %></td>
         <% if post.user == current_user %>
           <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <% end %>
+        <td class="post-favorite">
+          <% if current_user.has_favorite?(post) %>
+            <%= link_to '', unfavorite_post_path(post), method: :delete, class: "glyphicon glyphicon-heart" %>
+          <% else %>
+            <%= link_to '', favorite_post_path(post), method: :post, class: "glyphicon glyphicon-heart-empty" %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

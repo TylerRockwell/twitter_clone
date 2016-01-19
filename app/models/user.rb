@@ -32,4 +32,8 @@ class User < ActiveRecord::Base
   def is_following?(user_id)
     following.include?(User.find(user_id))
   end
+
+  def has_favorite?(post_id)
+    favorites.include?(Post.find(post_id))
+  end
 end

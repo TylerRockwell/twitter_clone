@@ -48,6 +48,20 @@ class PostsController < ApplicationController
     redirect_to posts_url, notice: 'Post was successfully destroyed.'
   end
 
+  def favorite
+    post_id = params[:id]
+    unless current_user.has_favorite?(post_id)
+      FavoriteHandler.create(user_id: current_user.id, post_id: post_id )
+    end
+    redirect_to posts_path
+  end
+
+  def unfavorite
+    post_id = params[:id]
+    FavoriteHandler.destroy_favorite(current_user.id, post_id)
+    redirect_to posts_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post

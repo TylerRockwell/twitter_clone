@@ -1,5 +1,5 @@
 Given(/^I am logged in with email "(.*?)" and password "(.*?)"$/) do |email, password|
-  FactoryGirl.create(:user, username: "user", email: email, password: password)
+  @current_user = FactoryGirl.create(:user, username: "user", email: email, password: password)
   visit '/users/sign_in'
   fill_in 'Email', with: email
   fill_in 'Password', with: password
@@ -21,6 +21,19 @@ end
 When(/^I visit the profile of "(.*?)"$/) do |username|
   FactoryGirl.create(:user, username: username, email: "#{username}@example.com")
   visit "/profile/#{username}"
+end
+
+When(/^I follow "(.*?)"$/) do |username|
+  @other_user = FactoryGirl.create(:user, username: username)
+  # FactoryGirl.create(:relationship, follower: @current_user , followed: @other_user )
+  visit "profile/#{@other_user.username}"
+  click_link "Follow this user"
+end
+
+Then(/^I should see posts from "(.*?)" in my feed$/) do |username|
+  FactoryGirl.create(:post, user: @other_user)
+  visit "/posts"
+  expect(page).to have_content(username)
 end
 
 

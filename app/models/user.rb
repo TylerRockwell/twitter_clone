@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
     following.include?(User.find(user_id))
   end
 
-  def has_favorite?(post_id)
-    favorites.include?(Post.find(post_id))
+  def has_favorite?(post)
+    favorites.include?(post)
   end
 end

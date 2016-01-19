@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite]
   before_action :block_unauthorized_changes, only: [:edit, :update, :destroy]
   before_filter :authenticate_user!
   # GET /posts
@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   def index
     # @posts = Post.all.includes(:user)
     @posts = Post.where(user_id: current_user.following.map(&:id)).includes(:user)
+    @user_favorites = current_user.favorites.map
   end
 
   # GET /posts/1
@@ -49,16 +50,14 @@ class PostsController < ApplicationController
   end
 
   def favorite
-    post_id = params[:id]
-    unless current_user.has_favorite?(post_id)
-      FavoriteHandler.create(user_id: current_user.id, post_id: post_id )
+    unless current_user.has_favorite?(@post)
+      FavoriteHandler.create(user_id: current_user.id, post_id: @post.id )
     end
     redirect_to posts_path
   end
 
   def unfavorite
-    post_id = params[:id]
-    FavoriteHandler.destroy_favorite(current_user.id, post_id)
+    FavoriteHandler.destroy_favorite(current_user.id, @post.id)
     redirect_to posts_path
   end
 

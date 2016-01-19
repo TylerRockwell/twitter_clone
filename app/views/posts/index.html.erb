@@ -18,7 +18,7 @@
           <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <% end %>
         <td class="post-favorite">
-          <% if current_user.has_favorite?(post) %>
+          <% if @user_favorites.include?(post) %>
             <%= link_to '', unfavorite_post_path(post), method: :delete, class: "glyphicon glyphicon-heart" %>
           <% else %>
             <%= link_to '', favorite_post_path(post), method: :post, class: "glyphicon glyphicon-heart-empty" %>

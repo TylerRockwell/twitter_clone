@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
   def unfollow
     followed = params[:user]
-    Relationship.doomed_relationship(current_user.id, followed).destroy
+    Relationship.destroy_relationship(current_user.id, followed)
     redirect_to profile_path(User.find(followed).username),
       notice: "You are no longer following this user"
   end

@@ -14,6 +14,7 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+
 .field {
   padding-bottom: 1em;
 }
@@ -39,11 +40,16 @@
   padding-right: 1em;
 }
 
+.post-create-link {
+  float: right;
+  padding-right: 1em;
+}
+
 .top-links {
   font-size: 24px;
 }
 
-.post-email {
+.post-username {
   padding-right: 1em;
 }
 
@@ -59,16 +65,16 @@
   color: red;
 }
 
-.post-content {
+.post-feed-table {
   a{
     color: #333;
     text-decoration: none;
   }
 }
 .post-favorite {
+  padding-right: 1em;
   a{
     color: #AA0D10;
-    text-decoration: none;
   }
 }
 

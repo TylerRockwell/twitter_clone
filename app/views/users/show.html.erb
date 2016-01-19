@@ -1,7 +1,11 @@
 <%= image_tag(@user.avatar.url(:medium), class: "user-profile-avatar") %><br />
-<p><%= link_to 'Edit your profile', edit_user_registration_path  %></p>
 
-  <h1><%= @user.username %></h1>
+<% if current_user == @user %>
+  <p><%= link_to 'Edit your profile', edit_user_registration_path  %></p>
+<% end %>
+
+<h1><%= @user.username %></h1>
+
 <% if current_user.is_following?(@user.id) %>
   <%= link_to 'Unfollow this user', unfollow_path(user: @user), method: :delete %>
 <% else %>
@@ -35,9 +39,11 @@
       <div class="col-md-5">
         <%= link_to post.content, post_path(post) %>
       </div>
-      <div class="col-md-1">
-        <%= link_to '', edit_post_path(post), class: "glyphicon glyphicon-pencil" %>
-      </div>
+      <% if current_user == @user %>
+        <div class="col-md-1">
+          <%= link_to '', edit_post_path(post), class: "glyphicon glyphicon-pencil" %>
+        </div>
+      <% end %>
     </div>
   <% end %>
 </div>

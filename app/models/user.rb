@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   has_many :following, through: :following_relationships, source: "followed"
   has_many :followers, through: :follower_relationships,  source: "follower"
 
+  has_many :favorite_handlers
+  has_many :favorites, through: :favorite_handlers, source: "post"
+
   validates :username, presence: true, uniqueness: true
   has_attached_file :avatar, styles: {medium: "300x300"}, default_url: "/images/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/

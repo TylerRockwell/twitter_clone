@@ -3,7 +3,6 @@ class PostsController < ApplicationController
   before_action :block_unauthorized_changes, only: [:edit, :update, :destroy]
   before_filter :authenticate_user!
   # GET /posts
-  # GET /posts.json
   def index
     # @posts = Post.all.includes(:user)
     @posts = Post.where(user_id: current_user.following.map(&:id)).includes(:user)

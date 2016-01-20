@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  get 'users/show'
+
+  get 'profile/:username' => 'users#show', as: :profile
   resources :posts
   devise_for :users, :controllers => {registrations: 'users/registrations'}
-
   root 'posts#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

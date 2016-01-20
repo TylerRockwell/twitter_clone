@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TwitterClone</title>
+  <title>Not Twitter</title>
   <%= stylesheet_link_tag    'application', media: 'all'%>
   <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="col-md-8 col-md-offset-2 container">
-  <% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %>">
-      <%= value %>
-    </div>
-  <% end %>
-
-  <div class="top-links">
-    <% if current_user %>
-      <%= link_to 'Not Twitter', posts_url %>
-      <span class="logout-link"><%= link_to 'Logout', destroy_user_session_path, method: :delete %></span>
+  <div class="col-md-8 col-md-offset-2 container">
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>">
+        <%= value %>
+      </div>
     <% end %>
-  </div>
 
-  <%= yield %>
-</div>
+    <div class="top-links">
+      <% if current_user %>
+        <%= link_to 'Not Twitter', posts_url %>
+        <span class="logout-link"><%= link_to 'Logout', destroy_user_session_path, method: :delete %></span>
+        <span class="profile-link"><%= link_to 'Profile', profile_path(username: current_user.username) %></span>
+      <% end %>
+    </div>
+
+    <%= yield %>
+
+  </div>
 </body>
 </html>

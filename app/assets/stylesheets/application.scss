@@ -34,10 +34,27 @@
   float: right;
 }
 
+.profile-link {
+  float: right;
+  padding-right: 1em;
+}
+
 .top-links {
   font-size: 24px;
 }
 
 .post-email {
   padding-right: 1em;
+}
+
+.alert-notice {
+  color: green;
+}
+
+.alert-warning {
+  color: yellow;
+}
+
+.alert-alert {
+  color: red;
 }

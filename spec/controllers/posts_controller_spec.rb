@@ -41,10 +41,10 @@ RSpec.describe PostsController, type: :controller do
   let(:valid_session) { {} }
 
   describe "GET #index" do
-    it "assigns all posts as @posts" do
+    it "assigns only followed users' posts as @posts" do
       post = Post.create! valid_attributes
       get :index, {}, valid_session
-      expect(assigns(:posts)).to eq([post])
+      expect(assigns(:posts)).to eq([])
     end
   end
 

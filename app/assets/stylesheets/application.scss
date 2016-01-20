@@ -14,7 +14,6 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-
 .field {
   padding-bottom: 1em;
 }
@@ -65,15 +64,15 @@
   color: red;
 }
 
-.post-feed-table {
-  a{
+.post-feed-table a {
     color: #333;
     text-decoration: none;
-  }
 }
+
 .post-favorite {
   padding-right: 1em;
-  a{
+
+  a {
     color: #AA0D10;
   }
 }
@@ -84,7 +83,8 @@
 
 .user-profile-post {
   margin-bottom: 1em;
-  a{
+  
+  a {
     color: #333;
     text-decoration: none;
   }

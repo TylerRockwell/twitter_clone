@@ -16,4 +16,16 @@ class PostDecorator < Draper::Decorator
       link_to '', edit_post_path(post), class: "glyphicon glyphicon-pencil"
     end
   end
+
+  def favorites_list
+    list = ""
+    if object.user_favorites.empty?
+      list << "Nobody yet."
+    else
+      object.user_favorites.each do |favorite|
+        list << favorite.username + "<br />"
+      end
+    end
+    list
+  end
 end

@@ -1,12 +1,6 @@
 <h2><%= @post.content %></h2>
-Said by <%= @post.user.username %>
+Said by <%= @post.author_name %>
 
 <h3>This post has been favorited by: </h3>
-<% if @post.user_favorites.empty? %>
-  Nobody yet.
-<% else %>
-  <% @post.user_favorites.each do |favorite| %>
-    <%= favorite.username %><br />
-  <% end %>
-<% end %>
+<%= @post.favorites_list %>
 <p><%= link_to 'Back', posts_path %></p>

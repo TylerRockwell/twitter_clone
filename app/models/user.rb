@@ -36,4 +36,8 @@ class User < ActiveRecord::Base
   def has_favorite?(post)
     favorites.include?(post)
   end
+
+  def avatar_medium
+    avatar.url(:medium)
+  end
 end

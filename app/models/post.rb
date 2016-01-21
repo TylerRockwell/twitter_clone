@@ -5,4 +5,8 @@ class Post < ActiveRecord::Base
 
   validates :user_id, presence: true
   validates :content, length: {maximum: 140}, allow_blank: false
+
+  def author_name
+    user.username
+  end
 end

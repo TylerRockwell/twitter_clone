@@ -51,13 +51,13 @@ RSpec.describe User, type: :model do
     context "when following a given user" do
       let!(:relationship) { create(:relationship, follower: @current_user, followed: @other_user1 ) }
       it "returns true" do
-        expect(@current_user.is_following?(@other_user1.id)).to eq(true)
+        expect(@current_user.is_following?(@other_user1)).to eq(true)
       end
     end
 
     context "when not following a given user" do
       it "returns false" do
-        expect(@current_user.is_following?(@other_user2.id)).to eq(false)
+        expect(@current_user.is_following?(@other_user2)).to eq(false)
       end
     end
   end

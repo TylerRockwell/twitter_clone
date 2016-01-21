@@ -6,7 +6,7 @@
 
 <h1><%= @user.username %></h1>
 
-<% if current_user.is_following?(@user.id) %>
+<% if current_user.is_following?(@user) %>
   <%= link_to 'Unfollow this user', unfollow_path(user: @user), method: :delete %>
 <% else %>
   <%= link_to 'Follow this user', follow_path(user: @user), method: :post %>

@@ -1,6 +1,6 @@
 Given(/^I create a post that says "(.*?)"$/) do |content|
   visit "/posts/new"
-  fill_in "Content", with: Faker::Company.buzzword
+  fill_in "Content", with: content
   click_button "Create Post"
   @my_post = Post.last
 end

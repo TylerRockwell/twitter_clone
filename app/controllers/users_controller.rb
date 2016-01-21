@@ -1,25 +1,29 @@
 class UsersController < ApplicationController
+  before_action :set_other_user, only: [:follow, :unfollow]
   def show
-      @user = User.find_by(username: params[:username])
-      redirect_to posts_path, alert: "Could not find a user with that name" unless @user
+    @user = User.find_by(username: params[:username])
+    redirect_to posts_path, alert: "Could not find a user with that name" unless @user
   end
 
   def follow
-    other_user = params[:user]
-
-    if current_user.is_following?(other_user)
+    if current_user.is_following?(@other_user)
       notice = "You will continue following this user"
     else
-      Relationship.create(follower_id: current_user.id, followed_id: other_user)
+      Relationship.create(follower: current_user, followed: @other_user)
       notice = "You are now following this user"
     end
-    redirect_to profile_path(User.find(other_user).username), notice: notice
+    redirect_to profile_path(@other_user.username), notice: notice
   end
 
   def unfollow
-    followed = params[:user]
-    Relationship.destroy_relationship(current_user.id, followed)
-    redirect_to profile_path(User.find(followed).username),
+    Relationship.destroy_relationship(current_user.id, @other_user.id)
+    redirect_to profile_path(@other_user.username),
       notice: "You are no longer following this user"
+  end
+
+  private
+
+  def set_other_user
+    @other_user = User.find(params[:user])
   end
 end

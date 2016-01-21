@@ -29,8 +29,8 @@ class User < ActiveRecord::Base
     following.count
   end
 
-  def is_following?(user_id)
-    following.include?(User.find(user_id))
+  def is_following?(other_user)
+    following.include?(other_user)
   end
 
   def has_favorite?(post)

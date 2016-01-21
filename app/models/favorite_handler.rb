@@ -7,7 +7,7 @@ class FavoriteHandler < ActiveRecord::Base
     message: "has already been favorited" }
 
   def self.destroy_favorite(user_id, post_id)
-    favorite = where('user_id = ? AND post_id = ?', user_id, post_id).first
+    favorite = find_by('user_id = ? AND post_id = ?', user_id, post_id)
     favorite.destroy if favorite
   end
 end

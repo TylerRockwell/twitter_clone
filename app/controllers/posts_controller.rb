@@ -4,7 +4,8 @@ class PostsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @posts = Post.where(user_id: current_user.following.ids).includes(:user, :user_favorites)
+    @posts = Post.where(user_id: current_user.following.ids)
+      .includes(:user, :user_favorites).decorate
   end
 
   def show

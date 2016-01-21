@@ -22,6 +22,8 @@ class PostDecorator < Draper::Decorator
     if object.user_favorites.empty?
       list << "Nobody yet."
     else
+      # I'm not sure how to make this work properly
+      # html_safe will work, but that opens a XSS vulnerability
       object.user_favorites.each do |favorite|
         list << favorite.username + "<br />"
       end

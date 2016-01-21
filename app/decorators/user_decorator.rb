@@ -16,7 +16,8 @@ class UserDecorator < Draper::Decorator
     end
   end
 
-  def count_number(type)
+  def display_number(type)
+    # I know there's a better way than an elsif (or a case), I just don't know what that is.
     if type == "following"
       "I am following #{pluralize(object.number_followed_by_user, 'person')}."
     elsif type == "followers"

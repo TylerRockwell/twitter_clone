@@ -18,12 +18,12 @@
 
 <div class="user-profile-subscriptions">
   <h3> My subscriptions </h3>
-   <%= @user.count_number("following") %>
+   <%= @user.display_number("following") %>
 </div>
 
 <div class="user-profile-followers">
   <h3> My followers </h3>
-  <%= @user.count_number("followers") %>
+  <%= @user.display_number("followers") %>
 </div>
 
 <div>

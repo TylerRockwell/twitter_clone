@@ -5,6 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
 users_attrs = [
   {email: "user@example.com", password: "password", password_confirmation: "password", username: "The best user"},
   {email: "lunk@example.com", password: "password", password_confirmation: "password", username: "Lunk"},
@@ -12,6 +13,7 @@ users_attrs = [
 ]
 
 User.create!(users_attrs)
+
 Relationship.create(
     follower_id: User.find_by_username("The best user").id,
     followed_id: User.find_by_username("Zorldo").id

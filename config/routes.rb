@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  post 'follow' => 'users#follow'
-  delete 'unfollow' => 'users#unfollow'
   get 'profile/:username' => 'users#show', as: :profile
+  resources :relationships, only: [:create, :destroy]
   resources :posts do
     member do
       post 'favorite'

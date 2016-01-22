@@ -25,7 +25,6 @@ end
 
 When(/^I follow "(.*?)"$/) do |username|
   @other_user = FactoryGirl.create(:user, username: username)
-  # FactoryGirl.create(:relationship, follower: @current_user , followed: @other_user )
   visit "profile/#{@other_user.username}"
   click_link "Follow this user"
 end

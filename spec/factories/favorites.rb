@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :favorite_handler do
+  factory :favorite do
     user
     post
   end

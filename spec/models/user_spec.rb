@@ -73,7 +73,7 @@ RSpec.describe User, type: :model do
 
       context "when a post is in the user's favorites" do
         let!(:post) { create(:post) }
-        let!(:favorite) { create(:favorite_handler, user: @current_user, post: post) }
+        let!(:favorite) { create(:favorite, user: @current_user, post: post) }
 
         it "returns true" do
           expect(@current_user.has_favorite?(post)).to eq(true)

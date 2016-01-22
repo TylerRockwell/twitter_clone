@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Post, type: :model do
   ### Associations
   it { is_expected.to belong_to(:user) }
-  it { is_expected.to have_many(:favorite_handlers) }
+  it { is_expected.to have_many(:favorites) }
   it { is_expected.to have_many(:user_favorites) }
 
   ### Validations

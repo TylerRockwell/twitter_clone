@@ -10,8 +10,8 @@ class User < ActiveRecord::Base
   has_many :following, through: :following_relationships, source: "followed"
   has_many :followers, through: :follower_relationships,  source: "follower"
 
-  has_many :favorite_handlers
-  has_many :favorites, through: :favorite_handlers, source: "post"
+  has_many :favorites
+  has_many :favorite_posts, through: :favorites, source: "post"
 
   validates :username, presence: true, uniqueness: true
   has_attached_file :avatar, styles: {medium: "300x300"}, default_url: "/images/missing.png"
@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   end
 
   def has_favorite?(post)
-    favorites.include?(post)
+    favorite_posts.include?(post)
   end
 
   def avatar_medium

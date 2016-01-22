@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.where(user_id: current_user.following.ids)
-      .includes(:user, :user_favorites).decorate
+      .includes(:user, :users_who_favorited).decorate
   end
 
   def show
@@ -43,13 +43,13 @@ class PostsController < ApplicationController
 
   def favorite
     unless current_user.has_favorite?(@post)
-      FavoriteHandler.create(user_id: current_user.id, post_id: @post.id )
+      Favorite.create(user_id: current_user.id, post_id: @post.id )
     end
     redirect_to posts_path
   end
 
   def unfavorite
-    FavoriteHandler.destroy_favorite(current_user.id, @post.id)
+    Favorite.destroy_favorite(current_user.id, @post.id)
     redirect_to posts_path
   end
 

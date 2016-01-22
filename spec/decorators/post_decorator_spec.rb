@@ -10,7 +10,7 @@ describe PostDecorator do
   describe "#favorite_icon" do
     let(:post) { create(:post).decorate }
     context "post was favorited by current user" do
-      let!(:favorite) {create(:favorite_handler,
+      let!(:favorite) {create(:favorite,
         user: @current_user, post: post)}
       it "should return a full heart" do
         expect(post.favorite_icon).to include("glyphicon-heart")
@@ -49,7 +49,7 @@ describe PostDecorator do
     end
 
     context "post has been favorited by a user" do
-      let!(:favorite) {create(:favorite_handler,
+      let!(:favorite) {create(:favorite,
         user: @current_user, post: post)}
       it "should include the user's name" do
         expect(post.favorites_list).to include(@current_user.username)

@@ -27,7 +27,7 @@ When(/^I try to edit that post$/) do
 end
 
 When(/^I favorite that user's post$/) do
-  FactoryGirl.create(:favorite_handler, user: @current_user, post: @zorldo_post)
+  FactoryGirl.create(:favorite, user: @current_user, post: @zorldo_post)
 end
 
 Then(/^I am listed on the post's show page$/) do

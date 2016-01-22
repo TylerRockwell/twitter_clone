@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.where(user_id: current_user.following.ids)
-      .includes(:user, :user_favorites).decorate
+      .includes(:user, :users_who_favorited).decorate
   end
 
   def show

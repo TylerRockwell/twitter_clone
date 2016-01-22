@@ -1,6 +1,6 @@
 <h1>Your Feed</h1>
 
-<table>
+<table class="post-feed-table">
   <thead>
     <tr>
       <th>User</th>
@@ -12,11 +12,12 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td class="post-email"><%= post.user.email %></td>
-        <td class="post-content"><%= post.content %></td>
-        <% if post.user == current_user %>
-          <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <% end %>
+        <td class="post-username">
+          <%= link_to post.author_name, "/profile/#{post.author_name}" %>
+        </td>
+        <td class="post-content"><%= link_to post.content, post_path(post) %></td>
+        <td class="post-favorite"><%= post.favorite_icon %></td>
+        <td class="post-edit"><%= post.edit_icon %></td>
       </tr>
     <% end %>
   </tbody>

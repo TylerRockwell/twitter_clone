@@ -16,3 +16,8 @@ Feature: Users
     Given I am logged in with email "test@example.com" and password "password"
     When I visit the profile of "zorldo"
     Then I should see "zorldo"
+
+  Scenario: As a User I want to see another user's posts in my feed
+    Given I am logged in with email "test@example.com" and password "password"
+    When I follow "jsmith"
+    Then I should see posts from "jsmith" in my feed

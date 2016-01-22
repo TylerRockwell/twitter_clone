@@ -6,7 +6,7 @@ RSpec.describe PostsController, type: :controller do
     sign_in @user
   end
 
-  let(:user_post) { FactoryGirl.create(:post)}
+  let(:user_post) { FactoryGirl.create(:post, user: @user)}
   # This should return the minimal set of attributes required to create a valid
   # Post. As you add validations to Post, be sure to
   # adjust the attributes here as well.
@@ -24,9 +24,10 @@ RSpec.describe PostsController, type: :controller do
   let(:valid_session) { {} }
 
   describe "GET #index" do
-    it "assigns all posts as @posts" do
+    it "assigns only followed users' posts as @posts" do
+      post = Post.create! valid_attributes
       get :index, {}, valid_session
-      expect(assigns(:posts)).to eq([user_post])
+      expect(assigns(:posts)).to eq([])
     end
   end
 

@@ -19,6 +19,7 @@
         <%= link_to 'Not Twitter', posts_url %>
         <span class="logout-link"><%= link_to 'Logout', destroy_user_session_path, method: :delete %></span>
         <span class="profile-link"><%= link_to 'Profile', profile_path(username: current_user.username) %></span>
+        <span class="post-create-link"><%= link_to 'Write Something', new_post_path %></span>
       <% end %>
     </div>
 

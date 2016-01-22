@@ -39,11 +39,16 @@
   padding-right: 1em;
 }
 
+.post-create-link {
+  float: right;
+  padding-right: 1em;
+}
+
 .top-links {
   font-size: 24px;
 }
 
-.post-email {
+.post-username {
   padding-right: 1em;
 }
 
@@ -57,4 +62,30 @@
 
 .alert-alert {
   color: red;
+}
+
+.post-feed-table a {
+    color: #333;
+    text-decoration: none;
+}
+
+.post-favorite {
+  padding-right: 1em;
+
+  a {
+    color: #AA0D10;
+  }
+}
+
+.user-profile-avatar {
+  margin-bottom: 1.5em;
+}
+
+.user-profile-post {
+  margin-bottom: 1em;
+
+  a {
+    color: #333;
+    text-decoration: none;
+  }
 }

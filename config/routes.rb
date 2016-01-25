@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'profile/:username' => 'users#show', as: :profile
+  get 'user/:username' => 'users#show', as: :profile
   resources :relationships, only: [:create, :destroy]
   resources :posts
   resources :favorites, only: [:create, :destroy]

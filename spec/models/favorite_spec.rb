@@ -10,13 +10,12 @@ RSpec.describe Favorite, type: :model do
   it { is_expected.to validate_presence_of(:post_id) }
 
   ### Methods
-  describe ".destroy_favorite(user_id, post_id)" do
+  describe ".find_favorite(user_id, post_id)" do
     let(:current_user) { create(:user) }
     let(:post) { create(:post) }
     let!(:favorite) { create(:favorite, user: current_user, post: post) }
-    it "should destroy a user favorite" do
-      expect { Favorite.destroy_favorite(current_user.id, post.id) }.
-        to change(Favorite, :count).by(-1)
+    it "should find a user's particular favorite" do
+      expect(Favorite.find_favorite(current_user.id, post.id)).to eq(favorite)
     end
   end
 end

@@ -42,6 +42,6 @@ Then(/^I am redirected to my feed$/) do
 end
 
 Then(/^my post should be changed to say "(.*?)"$/) do |content|
-  visit "/profile/#{@current_user.username}"
+  visit "/user/#{@current_user.username}"
   expect(page).to have_content(content)
 end

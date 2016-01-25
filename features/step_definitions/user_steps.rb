@@ -8,7 +8,7 @@ Given(/^I am logged in with email "(.*?)" and password "(.*?)"$/) do |email, pas
 end
 
 When(/^I visit my profile page$/) do
-  visit '/profile/user'
+  visit '/user/user'
 end
 
 When(/^I change my bio to "(.*?)"$/) do |bio|
@@ -20,12 +20,12 @@ end
 
 When(/^I visit the profile of "(.*?)"$/) do |username|
   FactoryGirl.create(:user, username: username, email: "#{username}@example.com")
-  visit "/profile/#{username}"
+  visit "/user/#{username}"
 end
 
 When(/^I follow "(.*?)"$/) do |username|
   @other_user = FactoryGirl.create(:user, username: username)
-  visit "profile/#{@other_user.username}"
+  visit "user/#{@other_user.username}"
   click_link "Follow this user"
 end
 
@@ -41,6 +41,6 @@ Then(/^I should see "(.*?)"$/) do |text|
 end
 
 Then(/^I should see my bio has been updated to "(.*?)"$/) do |new_bio|
-  visit '/profile/user'
+  visit '/user/user'
   expect(page).to have_content(new_bio)
 end

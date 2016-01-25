@@ -6,8 +6,7 @@ class Favorite < ActiveRecord::Base
   validates :post_id, presence: true, uniqueness: { scope: :user_id,
     message: "has already been favorited" }
 
-  def self.destroy_favorite(user_id, post_id)
+  def self.find_favorite(user_id, post_id)
     favorite = find_by('user_id = ? AND post_id = ?', user_id, post_id)
-    favorite.destroy if favorite
   end
 end

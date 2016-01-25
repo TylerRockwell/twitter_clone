@@ -10,14 +10,14 @@ RSpec.describe Relationship, type: :model do
   it { is_expected.to validate_presence_of(:followed_id) }
 
   ### Methods
-  describe ".destroy_relationship(follower_id, followed_id)" do
-    it "should destroy the relationship object" do
+  describe ".find_relationship(follower_id, followed_id)" do
+    it "should find the relationship object of two users" do
       relationship = create(:relationship)
       follower = relationship.follower
       followed = relationship.followed
 
-      expect { Relationship.destroy_relationship(follower.id, followed.id) }.
-        to change(Relationship, :count).by(-1)
+      expect(Relationship.find_relationship(follower.id, followed.id)).
+        to be_a(Relationship)
     end
   end
 end

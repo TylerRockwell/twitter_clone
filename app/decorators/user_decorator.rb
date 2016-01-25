@@ -10,9 +10,9 @@ class UserDecorator < Draper::Decorator
 
   def follow_link
     if current_user.is_following?(object)
-      link_to 'Unfollow this user', unfollow_path(user: object), method: :delete
+      link_to 'Unfollow this user', relationship_path(id: object.id), method: :delete
     else
-      link_to 'Follow this user', follow_path(user: object), method: :post
+      link_to 'Follow this user', relationships_path(id: object.id), method: :post
     end
   end
 
